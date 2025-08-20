@@ -1,6 +1,7 @@
 # Beat tracking example
 import librosa
 import soundfile
+import pyrubberband
 # 1. 文件路径
 filename = r"D:\temp work\Programme\Audio bpm adjust\base files\Requiem of fate.mp3"
 savepath = r"D:\temp work\Programme\Audio bpm adjust\base files\Requiem of fate adjust bpm version.wav"
@@ -29,7 +30,8 @@ FinalBpm = adjust_bpm(Bpm,Target,Tolerance)
 print(FinalBpm)
 
 # 5. 修改歌曲速度匹配Target
-StrechedResult = librosa.effects.time_stretch(y=y,rate=(Target/FinalBpm))
+AdjustRate = Target/FinalBpm
+StrechedResult = pyrubberband.time_stretch(y=y,sr=48000,rate=AdjustRate)
 print(type(StrechedResult))
 
 soundfile.write(savepath,StrechedResult,samplerate=48000,subtype='PCM_24')
