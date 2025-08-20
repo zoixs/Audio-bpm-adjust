@@ -31,7 +31,7 @@ print(FinalBpm)
 
 # 5. 修改歌曲速度匹配Target
 AdjustRate = Target/FinalBpm
-StrechedResult = pyrubberband.time_stretch(y=y,sr=48000,rate=AdjustRate)
+StrechedResult = pyrubberband.time_stretch(y=y,sr=48000,rate=1.2)
 print(type(StrechedResult))
 
 soundfile.write(savepath,StrechedResult,samplerate=48000,subtype='PCM_24')
