@@ -7,7 +7,7 @@ import os
 Target = 180 #目标bpm ///target bpm
 Tolerance = 50 # 原曲与目标bpm的差值，不建议修改/// difference of original bpm and target bpm, the modification is not recommended
 inputpath = r"D:\temp work\Programme\Audio bpm adjust\base files" # 波形原始文件路径///original music file path 
-outputpath = r"D:\temp work\Programme\Audio bpm adjust\base files" # 修改后文件储存路径+文件名///where you want to save the adjusted version + filename
+outputpath = r"D:\temp work\Programme\Audio bpm adjust\output files" # 修改后文件储存路径+文件名///where you want to save the adjusted version + filename
 # *导出文件默认为.wav格式，如要修改，则需要同时修改上面的后缀以及最后的subtype参数
 # *output file is .wav format by default,change the extension above and subtype at the endline to change the file format*
 
@@ -45,7 +45,7 @@ def adjust_the_music_bpm(input,output,Target,Tolerance):
     soundfile.write(output,StrechedResult,samplerate=48000)
     print("SUCCESSED")
 
-os.makedirs(inputpath,exist_ok=True)
+os.makedirs(outputpath,exist_ok=True)
 
 MusicNames = []
 for files in os.listdir(inputpath):
