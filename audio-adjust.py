@@ -39,11 +39,10 @@ def adjust_the_music_bpm(input,output,Target,Tolerance):
     # 修改歌曲速度匹配Target
     # strech the song to fit the target bpm
     AdjustRate = Target/FinalBpm
-    StrechedResult = pyrubberband.time_stretch(y=y,sr=48000,rate=1.2)
-    print(type(StrechedResult))
+    StrechedResult = pyrubberband.time_stretch(y=y,sr=48000,rate=AdjustRate)
+    print(f'Adjusted the song bpm by {AdjustRate:.2f} times')
 
     soundfile.write(output,StrechedResult,samplerate=48000)
-    print("SUCCESSED")
 
 os.makedirs(outputpath,exist_ok=True)
 
@@ -57,4 +56,5 @@ for i in MusicNames:
     inputfile = os.path.join(inputpath,i)
     outputfile = os.path.join(outputpath,f"Adjusted_{i}")
     adjust_the_music_bpm(inputfile,outputfile,Target,Tolerance)
+    print(f'Finished process:{i}')
     print('SUCCESSED')
