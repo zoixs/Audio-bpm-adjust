@@ -34,7 +34,7 @@ def adjust_the_music_bpm(input,output,Target,Tolerance):
         return bpm
 
     FinalBpm = adjust_bpm(Bpm,Target,Tolerance)
-    print(FinalBpm)
+    print(f'the original bpm of the song is:{Bpm}')
 
     # 修改歌曲速度匹配Target
     # strech the song to fit the target bpm
@@ -56,5 +56,5 @@ for i in MusicNames:
     inputfile = os.path.join(inputpath,i)
     outputfile = os.path.join(outputpath,f"Adjusted_{i}")
     adjust_the_music_bpm(inputfile,outputfile,Target,Tolerance)
-    print(f'Finished process:{i}')
+    print(f'Finished process[{i}]')
     print('SUCCESSED')
